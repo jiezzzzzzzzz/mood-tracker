@@ -11,7 +11,7 @@ bot = telebot.TeleBot(os.getenv('TOKEN'))
 
 connect_database = mysql.connector.connect(
     host='127.0.0.1',
-    user='root',
+    user=os.getenv('USER_NAME'),
     password=os.getenv('PASSWORD'),
     database=os.getenv('DATABASE_NAME'),
     port='3306'
