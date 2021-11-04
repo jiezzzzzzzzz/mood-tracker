@@ -94,10 +94,12 @@ def db_registration(message):
         good_things = message.text
         bad_things = user.bad_things
         mood = user.mood
-        sql = 'INSERT INTO records (user_id, mood, good_things, bad_things) VALUES (%s, %s, %s, %s)'
-        one = (user_id, mood, good_things, bad_things)
-        cursor.execute(sql, one)
+        query = 'INSERT INTO records (user_id, mood, good_things, bad_things) VALUES (%s, %s, %s, %s)'
+        values = (user_id, mood, good_things, bad_things)
+        cursor.execute(query, values)
         connect_database.commit()
+        cursor.close()
+        connect_database.close()
 
         bot.send_message(message.from_user.id, 'Умничка!')
         bot.send_message(message.from_user.id, 'До завтра!')
